@@ -1,0 +1,92 @@
+body {  
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #ff1c1c 0%, #ff1c1c 48%,
+        #000000 48%, #000000 52%,
+        #ffffff 52%, #ffffff 100%
+    );
+    background-attachment: fixed;
+    font-family: 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h3 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.container {
+    min-height: 400px; /* Garante um tamanho mínimo */
+    height: auto;      /* Deixa o container esticar para baixo */
+    overflow: visible; /* Garante que nada fique escondido */
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#pokedex-list {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    position: relative; /* Isso traz a lista para a frente */
+    z-index: 5;
+    list-style: none;
+}
+
+.pokemon-card {
+    background: white; /* Garante que o card tenha fundo se o gradiente falhar */
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.pokemon-card:hover { transform: scale(1.05);}
+.pokemon-image {height: 120px;}
+
+.types-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.type-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.5); /* Fundo semi-transparente para ler melhor */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* O círculo preto do meio */
+body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background-color: #000;
+    border-radius: 50%;
+    z-index: -1; /* Fica atrás dos cards, mas na frente do fundo */
+}
+
+/* O círculo branco interno (o botão) */
+body::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border: 10px solid #000;
+    border-radius: 50%;
+    z-index: -1;
+}
